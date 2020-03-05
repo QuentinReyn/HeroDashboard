@@ -1,0 +1,72 @@
+<h2>Create a new hero</h2>
+  <div>
+    <label>name:
+      <input [(ngModel)]="hero.name" placeholder="name" />
+    </label>
+    <label>surname:
+        <input [(ngModel)]="hero.surname" placeholder="surname" />
+      </label>
+  </div>
+  <label>Points a attribuer restants : {{hero.points_carac}}</label>
+  <h3>Caractéristiques</h3>
+  <mat-list>
+    <mat-list-item>
+      <button mat-mini-fab mat-icon-button color="primary" (click)="updatePoints('less','attaque')">
+        <mat-icon>remove</mat-icon>
+      </button>
+      <mat-form-field class="example-full-width">
+        <input  class="center" matInput min="1" placeholder="Attaque" disabled
+          [(ngModel)]="hero.attaque" />
+      </mat-form-field>
+      <button  mat-mini-fab mat-icon-button color="primary" (click)="updatePoints('plus','attaque')">
+        <mat-icon>add</mat-icon>
+      </button>
+    </mat-list-item>
+    <mat-list-item>
+      <button mat-mini-fab mat-icon-button color="primary" (click)="updatePoints('less','esquive')">
+        <mat-icon>remove</mat-icon>
+      </button>
+      <mat-form-field class="example-full-width">
+        <input class="center" matInput min="1"  placeholder="Esquive" disabled [(ngModel)]="hero.esquive" />
+      </mat-form-field>
+      <button  mat-mini-fab mat-icon-button color="primary" (click)="updatePoints('plus','esquive')">
+        <mat-icon>add</mat-icon>
+      </button>
+    </mat-list-item>
+    <mat-list-item>
+      <button mat-mini-fab mat-icon-button color="primary" (click)="updatePoints('less','degats')">
+        <mat-icon>remove</mat-icon>
+      </button>
+      <mat-form-field class="example-full-width">
+        <input class="center" matInput min="1" placeholder="Degats" disabled [(ngModel)]="hero.degats" />
+      </mat-form-field>
+      <button  mat-mini-fab mat-icon-button color="primary" (click)="updatePoints('plus','degats')">
+        <mat-icon>add</mat-icon>
+      </button>
+    </mat-list-item>
+    <mat-list-item>
+      <button mat-mini-fab mat-icon-button color="primary" (click)="updatePoints('less','hp')">
+        <mat-icon>remove</mat-icon>
+      </button>
+      <mat-form-field class="example-full-width">
+        <input class="center" matInput min="1" placeholder="HP" disabled [(ngModel)]="hero.hp" />       
+      </mat-form-field>
+      <button  mat-mini-fab mat-icon-button color="primary" (click)="updatePoints('plus','hp')">
+        <mat-icon>add</mat-icon>
+      </button>
+    </mat-list-item>
+    <mat-list-item style="margin-top: 20px;">
+        <mat-form-field appearance="fill">
+            <mat-label>Arme</mat-label>
+            <mat-select [(ngModel)]="hero.weapon_id">
+                <mat-option *ngFor="let weapon of weapons" [value]="weapon.id">
+                    {{ weapon.name }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </mat-list-item>
+  </mat-list>
+  <p>Les nombre de points totaux ne peux pas exceder 40</p>
+
+<button mat-raised-button (click)="goBack()">go back</button>
+<button mat-raised-button (click)="saveHero()">Save my hero</button>

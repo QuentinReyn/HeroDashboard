@@ -1,0 +1,158 @@
+@import '../../assets/variables.scss';
+
+.container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+mat-sidenav {
+    width: 240px;
+    border: 1px solid #d8d8d8;
+}
+
+mat-sidenav-content {
+    min-height: 100%;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.mat-menu-item {
+    font-size: 15px;
+}
+
+.mat-list-item {
+    min-height: 48px;
+    display: flex;
+    -ms-flex-direction: row;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.mat-nav-list .mat-list-item .mat-list-item-content {
+    padding: 0 24px !important;
+}
+
+.mat-nav-list .mat-list-item .mat-icon {
+    margin-right: 15px;
+    color: $darkSchneiderBgColor !important;
+}
+
+.mat-nav-list .mat-list-item.active,
+.mat-menu-item.active{
+    background-color: rgba(152, 152, 152, 0.20);
+}
+
+.mat-nav-list .mat-list-item.active .mat-icon,
+.mat-menu-item.active .mat-icon{
+    font-weight: 700;
+    color: $primarySchneiderBgColor !important;
+}
+.mat-nav-list .mat-list-item.active span,
+.mat-menu-item.active span {
+    font-weight: 500;
+}
+
+.mat-nav-list .mat-list-item span {
+    color: $darkSchneiderBgColor;
+}
+
+.content-container {
+    padding: 15px 20px;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex: 1 0 auto;
+    flex-basis: auto;
+}
+
+.mat-nav-list {
+    padding-top: 2px;
+}
+
+h1.app-name {
+    margin-left: 8px;
+}
+
+h1.app-name > a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.sidenav-container {
+    flex: 1;
+}
+
+.toolbar-is-mobile .sidenav-container {
+    flex: 1 0 auto;
+}
+
+.toggle-sidenav-icon{
+  color: #FFF;
+}
+
+.flex-spacer {
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+.fill-height {
+    display: flex;
+    align-items: center;
+}
+
+.button-settings {
+    font-size: 1rem;
+    height: 100%;
+    color: #FFF;
+    padding-right: 0;
+}
+
+.button-settings .mat-icon {
+    margin-top: -1px;
+    padding-right: 5px;
+    font-size: 1.6rem;
+}
+
+.toolbar {
+    padding: 0;
+    z-index: 2;
+    background: #3dcd58;
+    border-bottom: 4px solid $secondarySchneiderBgColor;
+}
+
+.logo-rdits-container {
+    padding: 6px 0;
+    border-bottom: 1px solid #d8d8d8;
+}
+
+.logo-rdits {
+    max-height: 50px;
+    margin: 0 auto;
+}
+
+.admin-panel-text {
+    font-weight: 400;
+}
+
+.user-panel-button {
+    background-color: $darkSchneiderBgColor !important;
+    color: #FFF;
+    margin: 0 15px;
+}
+
+.mat-card-avatar > img {
+    margin-top: -4px;
+}
+
