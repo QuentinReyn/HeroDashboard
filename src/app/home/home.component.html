@@ -1,9 +1,70 @@
-<h3>Top Heroes</h3>
-<div class="grid grid-pad">
-  <a *ngFor="let hero of heroes" class="col-1-4"
-      routerLink="/details/{{hero.id}}">
-    <div class="module hero">
-      <h4>{{hero.name}}</h4>
-    </div>
-  </a>
-</div>
+<h3 style="text-align: center;">Top Heroes</h3>
+<mat-nav-list class="row">
+  <div mat-list-item *ngFor="let heroWeapon of heroesWeapons | filter: searchInput" class="col m4 card-container">
+      <mat-card>
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{heroWeapon.hero.name}}</mat-card-title>
+            <mat-card-subtitle>{{heroWeapon.hero.surname}}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-list>
+              <mat-list-item>Attaque: {{ ConvertToInt(heroWeapon.hero.attaque) + ConvertToInt(heroWeapon.weapon.attaque)}} 
+                <p class="weapon-bonus" *ngIf="ConvertToInt(heroWeapon.weapon.attaque) > 0">
+                  <mat-chip color="green">+{{heroWeapon.weapon.attaque}}</mat-chip>                  
+                  </p>       
+                  <p class="weapon-bonus" *ngIf="ConvertToInt(heroWeapon.weapon.attaque) < 0">
+                    <mat-chip color="negative">{{heroWeapon.weapon.attaque}}</mat-chip>
+                  </p>
+                </mat-list-item>
+              <mat-list-item>Esquive: {{ ConvertToInt(heroWeapon.hero.esquive) + ConvertToInt(heroWeapon.weapon.esquive)}}
+                <p class="weapon-bonus" *ngIf="ConvertToInt(heroWeapon.weapon.esquive) > 0">
+                  <mat-chip color="green">+{{heroWeapon.weapon.esquive}}</mat-chip>                  
+                  </p>       
+                  <p class="weapon-bonus" *ngIf="ConvertToInt(heroWeapon.weapon.esquive) < 0">
+                    <mat-chip color="negative">{{heroWeapon.weapon.esquive}}</mat-chip>
+                  </p>                  
+              </mat-list-item> 
+              <mat-list-item>Dégats: {{ ConvertToInt(heroWeapon.hero.degats) + ConvertToInt(heroWeapon.weapon.degats)}}
+                <p class="weapon-bonus" *ngIf="ConvertToInt(heroWeapon.weapon.degats) > 0">
+                  <mat-chip color="green">+{{heroWeapon.weapon.degats}}</mat-chip>                  
+                  </p>       
+                  <p class="weapon-bonus" *ngIf="ConvertToInt(heroWeapon.weapon.degats) < 0">
+                    <mat-chip color="negative">{{heroWeapon.weapon.degats}}</mat-chip>
+                  </p>                  
+              </mat-list-item>
+              <mat-list-item>PV: {{ ConvertToInt(heroWeapon.hero.hp) + ConvertToInt(heroWeapon.weapon.hp)}}
+                <p class="weapon-bonus" *ngIf="ConvertToInt(heroWeapon.weapon.hp) > 0">
+                  <mat-chip color="green">+{{heroWeapon.weapon.hp}}</mat-chip>                  
+                  </p>       
+                  <p class="weapon-bonus" *ngIf="ConvertToInt(heroWeapon.weapon.hp) < 0">
+                    <mat-chip color="negative">{{heroWeapon.weapon.hp}}</mat-chip>
+                  </p>                    
+              </mat-list-item>
+              <mat-list-item>Points disponibles: {{heroWeapon.hero.points_carac}}</mat-list-item>
+            </mat-list>
+            <mat-expansion-panel *ngIf="heroWeapon.hero.weapon_id">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Arme : 
+                </mat-panel-title>
+                <mat-panel-description>
+                <b>{{heroWeapon.weapon.name}}</b>
+                </mat-panel-description>
+              </mat-expansion-panel-header>                           
+              <mat-list>
+                <mat-list-item>Attaque: {{heroWeapon.weapon.attaque}}</mat-list-item>
+                <mat-list-item>Esquive: {{heroWeapon.weapon.esquive}}</mat-list-item> 
+                <mat-list-item>Dégats: {{heroWeapon.weapon.degats}}</mat-list-item>
+                <mat-list-item>PV: {{heroWeapon.weapon.hp}}</mat-list-item>
+                <mat-list-item><b><a routerLink="/weapons/details/{{heroWeapon.weapon.id}}">Voir</a></b></mat-list-item>
+              </mat-list>
+          </mat-expansion-panel>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button routerLink="/heroes/details/{{heroWeapon.hero.id}}">EDIT</button>
+            <button mat-button (click)="deleteHero(heroWeapon.hero.id)">DELETE</button>
+          </mat-card-actions>
+        </mat-card>
+   </div>
+</mat-nav-list>

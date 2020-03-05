@@ -11,6 +11,7 @@ import { MatSnackBar } from '@angular/material';
 export class WeaponsComponent implements OnInit {
 
   weapons : Weapon[] = [];
+  searchInput : string = "";
   constructor(private weaponService : WeaponsService,private snackBar : MatSnackBar) { }
 
   ngOnInit() {

@@ -6,15 +6,12 @@
           <mat-icon aria-label="add activity">add_box</mat-icon>
           Add a new hero
       </button>
-      <mat-slide-toggle [(ngModel)]="checked" class="buttonMode" [color]="color">Mode : {{modeValue}}</mat-slide-toggle>
+      <mat-slide-toggle [(ngModel)]="checked" class="buttonMode">Mode : {{modeValue}}</mat-slide-toggle>
   </div>
-  <div class="flex-right" *ngIf="checked">
+  <div class="flex-right" *ngIf="!checked">
       <mat-form-field class="search-table-field">
           <input matInput placeholder="Filters.."  [(ngModel)]="searchInput" autocomplete="off">
-          <mat-hint >You can validate with enter key</mat-hint>
-          <button mat-button matSuffix mat-icon-button aria-label="Search" matTooltip="Search" (click)="search()">
-              <mat-icon>search</mat-icon>
-          </button>
+          <mat-hint >You can validate with enter key</mat-hint>         
       </mat-form-field>
   </div>
 </div>
@@ -88,47 +85,47 @@
      </div>
  </mat-nav-list>
 
- <mat-table [dataSource]="data" matSort class="mat-elevation-z8" *ngIf="checked">
+ <mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="checked">
 
   <!-- ID Column -->
   <ng-container matColumnDef="id">
-    <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+    <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
     <mat-cell *matCellDef="let row">{{row.hero.id}}</mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="nom">
-    <mat-header-cell *matHeaderCellDef mat-sort-header> Nom </mat-header-cell>
+    <mat-header-cell *matHeaderCellDef> Nom </mat-header-cell>
     <mat-cell *matCellDef="let row">{{row.hero.name}}</mat-cell>
   </ng-container>
   <!-- Description Column -->
   <ng-container matColumnDef="surnom">
-    <mat-header-cell *matHeaderCellDef mat-sort-header> Surnom </mat-header-cell>
+    <mat-header-cell *matHeaderCellDef> Surnom </mat-header-cell>
     <mat-cell *matCellDef="let row">{{row.hero.surname}}</mat-cell>
   </ng-container>
 
   <!-- Name Column -->
   <ng-container matColumnDef="attaque">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>Attaque</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef>Attaque</mat-header-cell>
     <mat-cell *matCellDef="let row">{{row.hero.attaque}}</mat-cell>
   </ng-container>
 
   <!-- Entity Column -->
   <ng-container matColumnDef="degats">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>Degats </mat-header-cell>
+    <mat-header-cell *matHeaderCellDef>Degats </mat-header-cell>
     <mat-cell *matCellDef="let row"> {{row.hero.degats}}</mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="esquive">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>Esquive</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef>Esquive</mat-header-cell>
     <mat-cell *matCellDef="let row"> {{row.hero.esquive}}</mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="hp">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>PV</mat-header-cell>
-    <mat-cell *matCellDef="let row"> {{row.hero.pv}}</mat-cell>
+    <mat-header-cell *matHeaderCellDef>PV</mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.hero.hp}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="arme">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>Arme</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef>Arme</mat-header-cell>
     <mat-cell *matCellDef="let row"> {{row.weapon.name}}</mat-cell>
   </ng-container>
 
@@ -138,6 +135,6 @@
 
 </mat-table>
 
-<mat-paginator *ngIf="!checked" [length]="pagedModificationsNumber" [pageSizeOptions]="[10, 25, 100]"></mat-paginator>
+<mat-paginator *ngIf="checked" [pageSizeOptions]="[10, 25, 100]"></mat-paginator>
 
 

@@ -43,10 +43,8 @@ export class HeroesComponent implements OnInit {
     this.heroService.getHeroes().subscribe(data=>{
       this.heroes=data;
       this.listHeroesAndWeapons();
-      this.dataSource = new MatTableDataSource(this.heroesWeapons);
-    
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;   
+      this.dataSource = new MatTableDataSource(this.heroesWeapons);  
+     
     });
   }
 
@@ -54,11 +52,6 @@ export class HeroesComponent implements OnInit {
     return parseInt(currentString);
   }
 
-  search(){
-    if(this.searchInput != ""){
-      this.heroesWeapons = [];     
-    }
-  }
 
   //jai ma liste de hero, ma liste d'armes
   //chaque hero a une arme et chaque arme a une image
@@ -76,7 +69,6 @@ export class HeroesComponent implements OnInit {
         heroWeapon.weapon = weapon;
         this.heroesWeapons.push(heroWeapon);
         this.dataSource = new MatTableDataSource(this.heroesWeapons);
-        console.log(this.dataSource.data);
       });
     }
     else{
@@ -85,24 +77,14 @@ export class HeroesComponent implements OnInit {
       heroWeapon.weapon = null;
       this.heroesWeapons.push(heroWeapon);
       this.dataSource = new MatTableDataSource(this.heroesWeapons);
-      console.log(this.dataSource.data);
     }  
     });
   }
 
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
-  }
-
   deleteHero(heroId){
     var ans = confirm("Are you sure you want to delete this hero ?");
-    if(confirm){
+    if(ans){
       this.heroService.deleteHero(heroId);
        this.snackBar.open("✅ Hero successfully deleted ✅", '', {
            duration: 3000,

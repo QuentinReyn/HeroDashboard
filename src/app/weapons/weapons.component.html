@@ -8,18 +8,15 @@
       </button>
   </div>
   <div class="flex-right">
-      <mat-form-field class="search-table-field">
-          <input matInput placeholder="Filters.." autocomplete="off">
-          <mat-hint >You can validate with enter key</mat-hint>
-          <button mat-button matSuffix mat-icon-button aria-label="Search"  matTooltip="Search">
-              <mat-icon>search</mat-icon>
-          </button>
-      </mat-form-field>
+    <mat-form-field class="search-table-field">
+      <input matInput placeholder="Filters.."  [(ngModel)]="searchInput" autocomplete="off">
+      <mat-hint >You can validate with enter key</mat-hint>    
+  </mat-form-field>
   </div>
 </div>
   
   <mat-nav-list class="row">
-    <div mat-list-item *ngFor="let weapon of weapons" class="col m4 card-container">
+    <div mat-list-item *ngFor="let weapon of weapons | filter: searchInput" class="col m4 card-container">
         <mat-card>
             <mat-card-header>
               <div mat-card-avatar style="background-size: cover" [style.backgroundImage]="'url('+ weapon.image +')'"></div>
