@@ -36,6 +36,9 @@ export class HeroesComponent implements OnInit {
   
  getWeapons(){
    this.weaponService.getWeapons().subscribe(weapons => this.weapons = this.weapons);
+
+
+
  }
 
   getHeroes(){
@@ -44,7 +47,6 @@ export class HeroesComponent implements OnInit {
       this.heroes=data;
       this.listHeroesAndWeapons();
       this.dataSource = new MatTableDataSource(this.heroesWeapons);  
-     
     });
   }
 
@@ -61,6 +63,7 @@ export class HeroesComponent implements OnInit {
     this.heroesWeapons = [];
     this.heroes.forEach(hero => {
       let weapon = null;
+      console.log(hero);
       if(hero.weapon_id != ""){
       this.weaponService.getWeapon(hero.weapon_id).subscribe(data =>{ 
         weapon = data;
@@ -69,6 +72,7 @@ export class HeroesComponent implements OnInit {
         heroWeapon.weapon = weapon;
         this.heroesWeapons.push(heroWeapon);
         this.dataSource = new MatTableDataSource(this.heroesWeapons);
+        console.log(this.heroesWeapons);
       });
     }
     else{
