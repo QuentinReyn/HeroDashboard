@@ -6,7 +6,7 @@
           <mat-icon aria-label="add activity">add_box</mat-icon>
           Add a new hero
       </button>
-      <mat-slide-toggle [(ngModel)]="checked" class="buttonMode" [color]="color">Mode : {{modeValue}}</mat-slide-toggle>
+      <mat-slide-toggle [(ngModel)]="checked" class="buttonMode">Mode : {{modeValue}}</mat-slide-toggle>
   </div>
   <div class="flex-right" *ngIf="checked">
       <mat-form-field class="search-table-field">
@@ -88,7 +88,7 @@
      </div>
  </mat-nav-list>
 
- <mat-table [dataSource]="data" matSort class="mat-elevation-z8" *ngIf="checked">
+ <mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" *ngIf="checked">
 
   <!-- ID Column -->
   <ng-container matColumnDef="id">
@@ -138,6 +138,6 @@
 
 </mat-table>
 
-<mat-paginator *ngIf="!checked" [length]="pagedModificationsNumber" [pageSizeOptions]="[10, 25, 100]"></mat-paginator>
+<mat-paginator *ngIf="!checked" [pageSizeOptions]="[10, 25, 100]"></mat-paginator>
 
 
